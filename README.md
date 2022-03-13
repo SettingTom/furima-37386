@@ -41,8 +41,8 @@
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| item   | references | null: false, foreign_key: true |
 | user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -58,7 +58,7 @@
 | area_id        | string     | null: false                    |
 | municipalities | string     | null: false                    |
 | block_number   | string     | null: false                    |
-| apartment      | string     | null: false                    |
+| apartment      | string     |                                |
 | phone_number   | string     | null: false                    |
 | buy_log        | references | null: false, foreign_key: true |
 
