@@ -4,7 +4,7 @@
 
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ------------------------- |
-| nickname           | string | null: false, unique: true |
+| nickname           | string | null: false               |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
 | family_name        | string | null: false               |
@@ -32,7 +32,6 @@
 | category_id     | integer    | null: false                    |
 | user            | references | null: false, foreign_key: true |
 
-
 ### Association
 
 - belongs_to :user
@@ -58,9 +57,10 @@
 | post_code      | string     | null: false                    |
 | area_id        | string     | null: false                    |
 | municipalities | string     | null: false                    |
+| block_number   | string     | null: false                    |
 | apartment      | string     | null: false                    |
 | phone_number   | string     | null: false                    |
-| user           | references | null: false, foreign_key: true |
+| buy_log        | references | null: false, foreign_key: true |
 
 ### Association
 
