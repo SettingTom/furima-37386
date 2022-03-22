@@ -19,6 +19,6 @@ class User < ApplicationRecord
 
   validates :birth_day, presence: true
 
-  # has_many :prototypes
-  # has_many :comments, dependent: :destroy
+  has_many :items
+  # has_many :buy_logs
 end
