@@ -5,10 +5,10 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
   end
-  
+
   private
 
   def item_params
-    params.require(:itrm).permit(:image).merge(user_id: current_user.id)
+    params.require(:item).permit(:image).merge(user_id: current_user.id)
   end
 end
