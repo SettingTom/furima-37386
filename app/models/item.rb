@@ -16,6 +16,10 @@ class Item < ApplicationRecord
   # has_one :buy_log
   has_one_attached :image
 
+  def was_attached?
+    self.image.attached?
+  end
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :condition
   belongs_to :delivery_pay
