@@ -2,14 +2,14 @@ class Item < ApplicationRecord
   validates :item_name, presence: true
 
   validates :price, presence: true
-  validates_inclusion_of :price, in:300..9999999
+  validates_inclusion_of :price, in: 300..9_999_999
 
   validates :text, presence: true
-  validates :condition_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :delivery_pay_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :delivery_day_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :area_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :condition_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :delivery_pay_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :delivery_day_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :area_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :image, presence: true
 
   belongs_to :user
@@ -17,7 +17,7 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   def was_attached?
-    self.image.attached?
+    image.attached?
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions

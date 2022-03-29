@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :item do
     item_name       { Faker::Lorem.paragraph }
-    price           { Faker::Number.between(from: 300, to: 9999999) }
+    price           { Faker::Number.between(from: 300, to: 9_999_999) }
     text            { Faker::Lorem.sentence }
     condition_id    { 2 }
     delivery_pay_id { 2 }
