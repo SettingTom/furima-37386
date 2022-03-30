@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   validates :item_name, presence: true
 
   validates :price, presence: true
-  validates_inclusion_of :price, in: 300..9_999_999
+  validates_inclusion_of :price, in: 300..9_999_999, numericality: { only_integer: true }
 
   validates :text, presence: true
   validates :condition_id, numericality: { other_than: 1, message: "can't be blank" }
@@ -16,9 +16,9 @@ class Item < ApplicationRecord
   # has_one :buy_log
   has_one_attached :image
 
-  def was_attached?
-    image.attached?
-  end
+  # def was_attached?
+  #   image.attached?
+  # end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :condition

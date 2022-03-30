@@ -44,28 +44,28 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Text can't be blank")
       end
-      it 'condition_idが空では登録できない' do
-        @item.condition_id = ''
+      it '商品の状態に「---」が選択されている場合は出品できない' do
+        @item.condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
-      it 'delivery_pay_idが空では登録できない' do
-        @item.delivery_pay_id = ''
+      it '配送料の負担に「---」が選択されている場合は出品できない' do
+        @item.delivery_pay_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery pay can't be blank")
       end
-      it 'delivery_day_idが空では登録できない' do
-        @item.delivery_day_id = ''
+      it '発送までの日数に「---」が選択されている場合は出品できない' do
+        @item.delivery_day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery day can't be blank")
       end
-      it 'area_idが空では登録できない' do
-        @item.area_id = ''
+      it '発送元の地域に「---」が選択されている場合は出品できない' do
+        @item.area_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Area can't be blank")
       end
-      it 'category_idが空では登録できない' do
-        @item.category_id = ''
+      it 'カテゴリーに「---」が選択されている場合は出品できない ' do
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
@@ -73,6 +73,11 @@ RSpec.describe Item, type: :model do
         @item.image = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Image can't be blank")
+      end
+      it 'userが紐づいていなければ登録できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
