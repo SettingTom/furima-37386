@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -16,6 +16,16 @@ class ItemsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @item = Item.find(params[:id])
+    @users = User.find(@item.user_id)
+    @categorys = Category.find(@item.category_id)
+    @conditions = Condition.find(@item.condition_id)
+    @delivery_pays = DeliveryPay.find(@item.delivery_pay_id)
+    @areas = Area.find(@item.area_id)
+    @delivery_days = DeliveryDay.find(@item.delivery_day_id)
   end
 
   private
