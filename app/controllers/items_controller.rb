@@ -28,6 +28,10 @@ class ItemsController < ApplicationController
     @delivery_days = DeliveryDay.find(@item.delivery_day_id)
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
   private
 
   def item_params
