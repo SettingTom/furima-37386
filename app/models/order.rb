@@ -14,6 +14,7 @@ class Order
   end
 
   def save
-    # 各テーブルにデータを保存する処理を書く
+    buy_log = BuyLog.create(user: user, item:item)
+    Address.create(post_code: post_code, area_id: area_id, municipalities: municipalities, block_number: block_number, apartment: apartment, buy_log: buy_log)
   end
 end
