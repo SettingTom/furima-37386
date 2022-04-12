@@ -1,4 +1,4 @@
-class Order
+class BuyLogAddress
   include ActiveModel::Model
   attr_accessor :post_code, :area_id, :municipalities, :block_number, :apartment, :phone_number, :buy_log, :user, :item, 
 
