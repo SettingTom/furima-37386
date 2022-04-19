@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_item
+  before_action :buyed_item_restriction
 
   def index
     @buy_log_address = BuyLogAddress.new
@@ -32,5 +33,9 @@ class OrdersController < ApplicationController
     params.require(:buy_log_address).permit(:post_code, :area_id, :municipalities, :block_number, :apartment, :phone_number).merge(
       user_id: current_user.id, item_id: params[:item_id], token: params[:token]
     )
+  end
+
+  def buyed_item_restriction
+    redirect_to root_path if @item.buy_log.present?
   end
 end
