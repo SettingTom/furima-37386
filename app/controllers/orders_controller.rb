@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
   def create
     @buy_log_address = BuyLogAddress.new(order_params)
     if @buy_log_address.valid?
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      Payjp.api_key = ENV['PAYJP_SECRET_KEY']
       Payjp::Charge.create(
         amount: @item.price,
         card: order_params[:token],
@@ -22,12 +22,15 @@ class OrdersController < ApplicationController
   end
 
   private
+
   def set_item
     @item = Item.find(params[:item_id])
     @delivery_pays = DeliveryPay.find(@item.delivery_pay_id)
   end
 
   def order_params
-    params.require(:buy_log_address).permit(:post_code, :area_id, :municipalities, :block_number, :apartment, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+    params.require(:buy_log_address).permit(:post_code, :area_id, :municipalities, :block_number, :apartment, :phone_number).merge(
+      user_id: current_user.id, item_id: params[:item_id], token: params[:token]
+    )
   end
 end

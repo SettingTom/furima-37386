@@ -28,12 +28,12 @@ RSpec.describe BuyLogAddress, type: :model do
       it 'post_codeにハイフンがないと購入できない' do
         @buy_log_address.post_code = '1234567'
         @buy_log_address.valid?
-        expect(@buy_log_address.errors.full_messages).to include("Post code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@buy_log_address.errors.full_messages).to include('Post code is invalid. Enter it as follows (e.g. 123-4567)')
       end
       it 'post_codeが全角数字を含むと購入できない' do
         @buy_log_address.post_code = '１23-4567'
         @buy_log_address.valid?
-        expect(@buy_log_address.errors.full_messages).to include("Post code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@buy_log_address.errors.full_messages).to include('Post code is invalid. Enter it as follows (e.g. 123-4567)')
       end
       it '都道府県に「---」が選択されている場合は出品できない' do
         @buy_log_address.area_id = 1
@@ -58,12 +58,12 @@ RSpec.describe BuyLogAddress, type: :model do
       it 'phone_numberが9桁の半角数値だと購入できない' do
         @buy_log_address.phone_number = '123456789'
         @buy_log_address.valid?
-        expect(@buy_log_address.errors.full_messages).to include("Phone number is too short")
+        expect(@buy_log_address.errors.full_messages).to include('Phone number is too short')
       end
       it 'phone_numberが全角数字を含むと購入できない' do
         @buy_log_address.phone_number = '123456789１０'
         @buy_log_address.valid?
-        expect(@buy_log_address.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@buy_log_address.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
       it 'tokenが空だと購入できない' do
         @buy_log_address.token = ''

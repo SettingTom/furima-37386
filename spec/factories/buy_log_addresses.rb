@@ -5,7 +5,7 @@ FactoryBot.define do
     municipalities { '東京都' }
     block_number { '1-1' }
     apartment { '東京ハイツ' }
-    phone_number { Faker::Number.between(from: 0000000000, to: 99999999999) }
-    token {"tok_abcdefghijk00000000000000000"}
+    phone_number { Faker::Number.between(from: 0o000000000, to: 99_999_999_999) }
+    token { 'tok_abcdefghijk00000000000000000' }
   end
 end
