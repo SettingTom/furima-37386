@@ -8,7 +8,7 @@ class BuyLogAddress
     validates :municipalities
     validates :block_number
     validates :phone_number, numericality: { only_integer: true, message: 'is invalid. Input only number' }
-    validates :phone_number, format: { with: /\d{10,11}\z/, message: 'is too short' }, length: {maximum: 11}
+    validates :phone_number, format: { with: /\d{10,11}\z/, message: 'is too short' }, length: { maximum: 11 }
     validates :token
     validates :user_id
     validates :item_id
