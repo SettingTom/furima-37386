@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :user_restriction, only: [:edit, :destroy]
+  before_action :buyed_item_restriction, only: [:edit]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -58,5 +59,9 @@ class ItemsController < ApplicationController
 
   def user_restriction
     redirect_to action: :index unless @item.user_id == current_user.id
+  end
+
+  def buyed_item_restriction
+    redirect_to action: :index if @item.buy_log.present?
   end
 end
