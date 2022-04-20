@@ -6,7 +6,7 @@ RSpec.describe BuyLogAddress, type: :model do
       user = FactoryBot.create(:user)
       item = FactoryBot.create(:item)
       @buy_log_address = FactoryBot.build(:buy_log_address, user_id: user.id, item_id: item.id)
-      sleep 0.1
+      sleep 0.2
     end
 
     context '商品購入できるとき' do
@@ -59,6 +59,11 @@ RSpec.describe BuyLogAddress, type: :model do
         @buy_log_address.phone_number = '123456789'
         @buy_log_address.valid?
         expect(@buy_log_address.errors.full_messages).to include('Phone number is too short')
+      end
+      it 'phone_numberが12桁の半角数値だと購入できない' do
+        @buy_log_address.phone_number = '123456789012'
+        @buy_log_address.valid?
+        expect(@buy_log_address.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
       end
       it 'phone_numberが全角数字を含むと購入できない' do
         @buy_log_address.phone_number = '123456789１０'
